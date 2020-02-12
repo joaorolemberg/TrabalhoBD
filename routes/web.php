@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', ['uses'  => 'loginController@telaLogin']);
+Route::get('/login', ['uses'  => 'loginController@telaLogin']);
+Route::post('/login', ['uses'  => 'loginController@fazerLogin']);
+
+Route::get('/homepage', ['uses'  => 'homepageController@telaHome']);
+
+
+Route::get('/t', function () {
+    return view('teste');
 });
