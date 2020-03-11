@@ -1,25 +1,5 @@
 @media(min-width: 300px){
 
-
-    .labelForms{
-
-    
-        font-size: 1.5em;
-        color:  rgba(146,101,71,1);
-        text-shadow: 1px 1px 1px #ffffff;
-        font-weight: bold;
-        font-family: 'Times New Roman', Times, serif;
-    
-    }
-
-    .botao{
-
-        text-align: center;
-        font-size: 1.5em;
-        color: white;
-        background-color: rgba(146,101,71,1);
-        
-    }
     #btnLogin{
 
         min-width: 30%;
@@ -84,25 +64,7 @@
 
 @media(min-width: 1200px){
 
-    .labelForms{
-
-    
-        font-size: 2em;
-        color:  rgba(146,101,71,1);
-        text-shadow: 1px 1px 1px #ffffff;
-        font-weight: bold;
-        font-family: 'Times New Roman', Times, serif;
-    
-    }
-
-    .botao{
-
-        text-align: center;
-        font-size: 1.5em;
-        color: white;
-        background-color: rgba(146,101,71,1);
-        
-    }
+   
     #btnLogin{
 
         min-width: 30%;
@@ -126,7 +88,7 @@
         width: 100%;
         height: 100%;
         clear: both;
-        font-family: ;
+        
     
     }
     

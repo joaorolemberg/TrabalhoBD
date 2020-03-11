@@ -1,0 +1,86 @@
+
+/*background:#8B4513;
+    
+*/
+#master{
+    background-image: url('viaLactea.jpg');
+    background-size: cover;
+
+   
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clear: both;
+}
+
+#cabecalhoMaster1{
+    min-height: 140px;
+    background:#8B4513;
+    align-items: center;
+}
+
+#cabecalhoMaster1 h1{
+    
+    padding: 1cm 0cm 0.76cm 1.5cm;
+    font-size: 3em;
+    color:  white;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+#cabecalhoMaster1 a{
+    font-size: 1.5em;
+    color:  white;   
+    padding-right: 30px;
+}
+
+#cabecalhoMaster2 {
+    min-height: 80px;
+ 
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+#cabecalhoMaster2 a{
+    font-size: 1.4em;
+}
+
+#dropPlaneta{
+    background-color: #8B4513;
+    width: 80%;
+    font-size: 1.5em;
+}
+
+#dropEstrela{
+    background-color: #8B4513;
+    width: 80%;
+    font-size: 1.5em;
+}
+
+#dropSatelite{
+    background-color: #8B4513;
+    width: 80%;
+    font-size: 1.5em;
+}
+#dropSistema{
+    background-color: #8B4513;
+    width: 80%;
+    font-size: 1.5em;
+}
+
+#dropGalaxia{
+    background-color: #8B4513;
+    width: 80%;
+    font-size: 1.5em;
+}
+
+#dropRelac{
+    background-color: #8B4513;
+    width: 80%;
+    font-size: 1.5em;
+}
+
+#rodape{
+    min-height: 80px;
+    background:#8B4513;
+    align-items: center; 
+    margin-top:100px ;
+}

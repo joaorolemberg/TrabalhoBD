@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+        
         <link rel="stylesheet" href="{{asset('css/stylesheetLogin.css')}}">
+        <link rel="stylesheet" href="{{asset('css/stylesheetClasses.css')}}">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
         <title>
@@ -34,7 +36,8 @@
 
                         <h1 class="display-1">CCM</h1>
                         <h2 class="display-3">Centro de Cosmologia Mundial</h2>
-
+                       
+                        
                         <form method="post" action="{{ action('loginController@fazerLogin') }}">
                             <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 
@@ -51,6 +54,7 @@
                             <button type="submit" id="btnLogin" class="botao">Entrar</button>
                             
                         </form>
+                        
                         <br> 
                         <a href="">Cadastre-se</a>
                             
