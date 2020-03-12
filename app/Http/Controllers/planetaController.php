@@ -141,7 +141,7 @@ class planetaController extends Controller
                 'mensagem'=>$msg
             ] ));        
         }
-            dd($request->all());
+            dd($request->all());    
     }
 
     public function consultaRemover(Request $request){

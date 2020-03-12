@@ -11,12 +11,29 @@ class estrelaController extends Controller
 
     public function inserirEstrela(Request $request){
         
-        $nome          =$request->get('nome');
-        $tamanho       =$request->get('tamanho');
-        $peso          =$request->get('peso');
-        $velocidade    =$request->get('velocidade');
-        $possuiSN      =$request->get('possuiSN');
-        $composicao    =$request->get('composicao');
+        try{
+            $possuiSN='false';
+            $Planeta =DB:: insert('INSERT INTO estrela values(DEFAULT,?,?,?,?,?,?)',[    
+                                                                                                                                                                                                             
+                $request->get('tamanho'),
+                $request->get('idade'),
+                $possuiSN,
+                $request->get('dist_terra'), 
+                $request->get('nome'),
+                $request->get('tipo')]
+            
+            );
+            $msg= 'Estrela inserida com sucesso';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+
+        }catch (Exception $e){
+            $msg= 'Não foi possível inserir a estrela,tente novamente';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+        }
         
         dd($request->all());
         
@@ -109,6 +126,40 @@ class estrelaController extends Controller
 
     }
     public function alterarEstrela(Request $request){
+        try{
+            $possuiSN='false';
+
+            if($request->get('possuiSN')=='SIM'){
+                $possuiSN='true';
+            }
+            
+            $Estrela =DB:: update('UPDATE estrela SET tamanho=?,idade=?,dist_terra=?,nome=?,tipo=? WHERE idEstrela=?',[
+                
+                $request->get('tamanho'),
+                $request->get('idade'),
+                $request->get('dist_terra'), 
+                $request->get('nome'),
+                $request->get('tipo'),
+                $request->get('id')
+                
+                ]);
+
+            $msg= 'Estrela alterada com sucesso';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+
+        }catch (Exception $e){
+        
+            $msg= 'Não foi possível alterar a estrela ,tente novamente';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));        
+    }
+
+
+
+
         dd($request->all());
     }
 
@@ -151,6 +202,25 @@ class estrelaController extends Controller
     }
 
     public function removerEstrela(Request $request){
+
+        try{
+            $Estrela =DB:: delete('DELETE FROM Estrela WHERE idEstrela=?',[
+                $request->get('id')
+                ]);
+            
+            $msg= 'Estrela excluido com sucesso';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+
+        }catch (Exception $e){
+
+            $msg= 'Não foi possível excluir estrela, tente novamente';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+
+        }
         dd($request->all());
     }
 
