@@ -35,14 +35,6 @@
             <label class="labelFormsInserir" >Velocidade de Rotação</label>
             {!! Form:: text('velocidade',null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Velocidade em km/h"])!!}
         </div>
-
-        <div class="form-group" style="padding-left:60px;">
-            <label class="labelFormsInserir" style="padding-right:60px;">Possui satélite natural?</label>
-            <label class="checkForm">
-                {{ Form::checkbox('possuiSN',null)}}
-            </label>
-
-        </div>
         
         <div class="form-group" style="padding-left:60px;">     
             <label class="labelFormsInserir" >Composição</label>

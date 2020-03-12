@@ -12,7 +12,7 @@
 
     <div class="container overflow-auto" id="containerConsultar">
 
-        <h1>Consultar Planeta</h1>  
+        <h1>Consultar Estrela</h1>  
         <!-- CASO FOR UTILIZAR 2 METODOS ALTERAR O METHOD SEMELHANTE AO LOGIN-->
         {!! Form::open(['method'=> 'post','class'=> 'form-padrao'])!!}
 
@@ -30,7 +30,7 @@
             <div class="col-xl-7" style="display:flex; aling-items: center; ">
 
                     <label class="labelFormsInserir" >ID:</label>
-                    {!! Form:: text('id',null,['id'=>'consultarText','class'=>'form-control','placeholder'=>"ID do planeta"])!!}
+                    {!! Form:: text('id',null,['id'=>'consultarText','class'=>'form-control','placeholder'=>"ID da estrela"])!!}
             </div>
             <div class="col-xl-2" >
                     {!!Form::submit('Consultar',['style'=>'margin-right:50px; clear:both','class'=>'botaoForm']) !!}

@@ -17,11 +17,11 @@
                 @forelse ($data as $planeta)
                 <dd>
                     <label class="labelFormsInserir" >ID: </label>
-                    <label class="labelFormsConsulta" >{{$planeta->id}}</label>
+                    <label class="labelFormsConsulta" >{{$planeta->idplaneta}}</label>
                 </dd>
                 <dd>
                     <label class="labelFormsInserir" >Nome: </label>
-                    <label class="labelFormsConsulta" >{{$planeta->name}}</label>
+                    <label class="labelFormsConsulta" >{{$planeta->nome}}</label>
                 </dd>
 
                 <dd>
@@ -37,20 +37,20 @@
                     
                 <dd>
                     <label class="labelFormsInserir" >Velocidade :</label>
-                    <label class="labelFormsConsulta" >{{$planeta->velocidade ?? null}} km/h</label>
+                    <label class="labelFormsConsulta" >{{$planeta->vel_rotacao ?? null}} km/h</label>
                 </dd>
                 
                 <dd>
                     <label class="labelFormsInserir" >Possui satélite :</label>
-                    <label class="labelFormsConsulta" >{{$planeta->possuiSN ?? null}}</label>
+                    <label class="labelFormsConsulta" >{{$planeta->psn_planeta ?? null}}</label>
                 </dd>
 
                 <dd>
                     <label class="labelFormsInserir" >Composição: </label>
-                    <label class="labelFormsConsulta" >{{$planeta->composicao ?? null}}</label>
+                    <label class="labelFormsConsulta" >{{$planeta->comp_planeta ?? null}}</label>
                 </dd>
                 {!! Form::open(['method'=> 'put','action'=>'planetaController@removerPlaneta','class'=> 'form-padrao'])!!}
-                    {!! Form:: hidden('id',$planeta->id ?? null)!!}
+                    {!! Form:: hidden('id',$planeta->idplaneta ?? null)!!}
                     {!!Form::submit('Remover',['style'=>'margin-right:50px; clear:both','class'=>'botaoForm']) !!}
   
                 {!! Form::close() !!}

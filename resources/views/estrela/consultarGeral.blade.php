@@ -12,7 +12,7 @@
 
     <div class="container overflow-auto" id="containerConsultar">
 
-        <h1>Consultar Planeta</h1>  
+        <h1>Consultar Estrela</h1>  
         <!-- CASO FOR UTILIZAR 2 METODOS ALTERAR O METHOD SEMELHANTE AO LOGIN-->
         {!! Form::open(['method'=> 'post','class'=> 'form-padrao'])!!}
 
@@ -23,14 +23,14 @@
                 <label class="form-check-label" for="a">Consulta específica</label>
                 <br>
                 {!! Form:: radio('consulta','geral',['class'=>'radioForm','type'=>'radio','id'=>'b'])!!}
-                <label class="form-check-label" for="b">Consulta total</label>
+                <label class="form-check-label" for="b">Consulta geral</label>
 
             </div>
 
             <div class="col-xl-7" style="display:flex; aling-items: center; ">
 
                     <label class="labelFormsInserir" >ID:</label>
-                    {!! Form:: text('id',null,['id'=>'consultarText','class'=>'form-control','placeholder'=>"ID do planeta"])!!}
+                    {!! Form:: text('id',null,['id'=>'consultarText','class'=>'form-control','placeholder'=>"ID da estrela"])!!}
             </div>
             <div class="col-xl-2" >
                     {!!Form::submit('Consultar',['style'=>'margin-right:50px; clear:both','class'=>'botaoForm']) !!}
@@ -43,25 +43,25 @@
           <table class="table table-dark">
             <thead>
               <tr>
-                <th scope="col">#id</th>
+                <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Tamanho</th>
-                <th scope="col">Peso</th>
-                <th scope="col">Velocidade</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Distância</th>
                 <th scope="col">Possui SN</th>
-                <th scope="col">Composicao</th> 
+                <th scope="col">Tipo</th> 
               </tr>
             </thead>
             <tbody>
-                @foreach ($data as $planeta)
+                @foreach ($data as $estrela)
                       <tr>
-                        <td>{{$planeta->idplaneta}}</td>
-                        <td>{{$planeta->nome}}</td>
-                        <td>{{$planeta->tamanho ?? null}}</td>
-                        <td>{{$planeta->peso ?? null}}</td>
-                        <td>{{$planeta->vel_rotacao ?? null}}</td>
-                        <td>{{$planeta->psn_planeta ?? null}}</td>
-                        <td>{{$planeta->comp_planeta ?? null}}</td>
+                        <td>{{$estrela->idestrela ?? null}}</td>
+                        <td>{{$estrela->nome ?? null}}</td>
+                        <td>{{$estrela->tamanho ?? null}}</td>
+                        <td>{{$estrela->idade ?? null}}</td>
+                        <td>{{$estrela->dist_terra ?? null}}</td>
+                        <td>{{$estrela->psnestrela ?? null}}</td>
+                        <td>{{$estrela->tipo ?? null}}</td>
                         <td></td>
                     </tr>
                 @endforeach

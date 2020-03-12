@@ -60,10 +60,10 @@
                                 Estrela
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropEstrela">
-                                <a class="dropdown-item" href="#">Consultar</a>
-                                <a class="dropdown-item" href="#">Inserir</a>
-                                <a class="dropdown-item" href="#">Alterar</a>
-                                <a class="dropdown-item" href="#">Remover</a>
+                                <a class="dropdown-item" href="{{route('estrela.consultar')}}">Consultar</a>
+                                <a class="dropdown-item" href="{{route('estrela.inserir')}}">Inserir</a>
+                                <a class="dropdown-item" href="{{route('estrela.alterar')}}">Alterar</a>
+                                <a class="dropdown-item" href="{{route('estrela.remover')}}">Remover</a>
                             </div>
                         </div>
                     </div>

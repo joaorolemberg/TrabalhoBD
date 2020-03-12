@@ -16,13 +16,13 @@
 
             {!! Form::open(['method'=> 'put','action'=>'planetaController@alterarPlaneta','class'=> 'form-padrao'])!!}
                 
-                {!! Form:: hidden('id',$planeta->id ?? null)!!}
+                {!! Form:: hidden('id',$planeta->idplaneta ?? null)!!}
                 <label class="labelFormsInserir" style="padding-left:60px;" >ID: </label>
-                <label class="labelFormsConsulta" >{{$planeta->id}}</label>
+                <label class="labelFormsConsulta" >{{$planeta->idplaneta}}</label>
 
                 <div class="form-group" style="padding-left:60px;">     
                     <label class="labelFormsInserir" >Nome</label>
-                    {!! Form:: text('nome',$planeta->name ?? null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Nome do Planeta"])!!}
+                    {!! Form:: text('nome',$planeta->nome ?? null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Nome do Planeta"])!!}
                 </div>
 
                 <div class="form-group" style="padding-left:60px;" >     
@@ -37,18 +37,16 @@
 
                 <div class="form-group" style="padding-left:60px;" >     
                     <label class="labelFormsInserir" >Velocidade de Rotação</label>
-                    {!! Form:: text('velocidade',$planeta->velocidade ?? null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Velocidade em km/h"])!!}
+                    {!! Form:: text('velocidade',$planeta->vel_rotacao ?? null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Velocidade em km/h"])!!}
                 </div>
 
-                <div class="form-group" style="padding-left:60px;">
-                    <label class="labelFormsInserir" style="padding-right:60px;">Possui satélite natural?</label>
-                    <label class="checkForm">{{ Form::checkbox('possuiSN',null)}}</label>
-                </div>
-                        
+                {!! Form:: hidden('possuiSN',$planeta->psn_planeta ?? null)!!}
+
                 <div class="form-group" style="padding-left:60px;">     
                     <label class="labelFormsInserir" >Composição</label>
-                    {!! Form:: text('composicao',$planeta->composicao ?? null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Composição química (Ex.: H:10%;O:60%;He:30%)"])!!}
+                    {!! Form:: text('composicao',$planeta->comp_planeta ?? null,['id'=>'inserirForms','class'=>'form-control','placeholder'=>"Composição química (Ex.: H:10%;O:60%;He:30%)"])!!}
                 </div>
+
 
                 {!!Form::submit('Alterar',['style'=>'margin-right:50px;','class'=>'botaoForm']) !!}
 
