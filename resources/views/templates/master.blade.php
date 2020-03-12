@@ -74,10 +74,10 @@
                                 Satélite
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropSatelite">
-                                <a class="dropdown-item" href="#">Consultar</a>
-                                <a class="dropdown-item" href="#">Inserir</a>
-                                <a class="dropdown-item" href="#">Alterar</a>
-                                <a class="dropdown-item" href="#">Remover</a>
+                                <a class="dropdown-item" href="{{route('satelite.consultar')}}">Consultar</a>
+                                <a class="dropdown-item" href="{{route('satelite.inserir')}}">Inserir</a>
+                                <a class="dropdown-item" href="{{route('satelite.alterar')}}">Alterar</a>
+                                <a class="dropdown-item" href="{{route('satelite.remover')}}">Remover</a>
                             </div>
                         </div>
                     </div>

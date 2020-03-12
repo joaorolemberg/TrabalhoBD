@@ -52,3 +52,19 @@ Route::get('/estrela/remover', ['as'=>'estrela.remover',function(){ return view(
 Route::post('/estrela/remover', ['as'=>'estrela.remover','uses'  =>'estrelaController@consultaRemover']);
 Route::put('/estrela/remover', ['as'=>'estrela.remover','uses'  =>'estrelaController@removerEstrela']);
 
+//SATELITE
+//          INSERIR
+Route::get('/satelite/inserir', ['as'=>'satelite.inserir',function(){ return view('satelite.inserir'); }]);
+Route::post('/satelite/inserir', ['as'=>'satelite.inserir','uses'  =>'sateliteController@inserirSatelite']);
+//          CONSULTAR
+Route::get('/satelite/consultar', ['as'=>'satelite.consultar',function(){ return view('satelite.consultar'); }]);
+Route::post('/satelite/consultar', ['as'=>'satelite.consultar','uses'  =>'sateliteController@consultaSatelite']);
+//          ALTERAR
+Route::get('/satelite/alterar', ['as'=>'satelite.alterar',function(){ return view('satelite.alterar'); }]);
+Route::post('/satelite/alterar', ['as'=>'satelite.alterar','uses'  =>'sateliteController@consultaAlterar']);
+Route::put('/satelite/alterar', ['as'=>'satelite.alterar','uses'  =>'sateliteController@alterarSatelite']);
+//         REMOVER
+Route::get('/satelite/remover', ['as'=>'satelite.remover',function(){ return view('satelite.remover'); }]);
+Route::post('/satelite/remover', ['as'=>'satelite.remover','uses'  =>'sateliteController@consultaRemover']);
+Route::put('/satelite/remover', ['as'=>'satelite.remover','uses'  =>'sateliteController@removerSatelite']);
+
