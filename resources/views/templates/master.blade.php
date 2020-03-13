@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{asset('css/stylesheetTemplates.css')}}">
         <link rel="stylesheet" href="{{asset('css/stylesheetClasses.css')}}">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-
+ 
         <title>
                 Centro de Cosmologia Mundial
         </title>
@@ -89,10 +89,12 @@
                                 Sistema
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropSistema">
-                                <a class="dropdown-item" href="#">Consultar</a>
-                                <a class="dropdown-item" href="#">Inserir</a>
-                                <a class="dropdown-item" href="#">Alterar</a>
-                                <a class="dropdown-item" href="#">Remover</a>
+                                <a class="dropdown-item" href="{{route('sistema.consultar')}}">Consultar</a>
+                                <a class="dropdown-item" href="{{route('sistema.inserir')}}">Inserir</a>
+                                <a class="dropdown-item" href="{{route('sistema.alterar')}}">Alterar</a>
+                                <a class="dropdown-item" href="{{route('sistema.remover')}}">Remover</a>
+                                
+                                
                             </div>
                         </div>
                     </div>

@@ -68,3 +68,19 @@ Route::get('/satelite/remover', ['as'=>'satelite.remover',function(){ return vie
 Route::post('/satelite/remover', ['as'=>'satelite.remover','uses'  =>'sateliteController@consultaRemover']);
 Route::put('/satelite/remover', ['as'=>'satelite.remover','uses'  =>'sateliteController@removerSatelite']);
 
+//SISTEMA
+//          INSERIR
+Route::get('/sistema/inserir', ['as'=>'sistema.inserir',function(){ return view('sistema.inserir'); }]);
+Route::post('/sistema/inserir', ['as'=>'sistema.inserir','uses'  =>'sistemaController@inserirSistema']);
+Route::put('/sistema/inserir', ['as'=>'sistema.inserir','uses'  =>'sistemaController@inserirEntidade']);
+//          CONSULTAR
+Route::get('/sistema/consultar', ['as'=>'sistema.consultar',function(){ return view('sistema.consultar'); }]);
+Route::post('/sistema/consultar', ['as'=>'sistema.consultar','uses'  =>'sistemaController@consultaSistema']);
+//          ALTERAR
+Route::get('/sistema/alterar', ['as'=>'sistema.alterar',function(){ return view('sistema.alterar'); }]);
+Route::post('/sistema/alterar', ['as'=>'sistema.alterar','uses'  =>'sistemaController@consultaAlterar']);
+Route::put('/sistema/alterar', ['as'=>'sistema.alterar','uses'  =>'sistemaController@alterarSistema']);
+//         REMOVER
+Route::get('/sistema/remover', ['as'=>'sistema.remover',function(){ return view('sistema.remover'); }]);
+Route::post('/sistema/remover', ['as'=>'sistema.remover','uses'  =>'sistemaController@consultaRemover']);
+Route::put('/sistema/remover', ['as'=>'satelsistemaite.remover','uses'  =>'sistemaController@removerSistema']);

@@ -1,0 +1,16 @@
+#containerInserir{
+    min-width: 70%;
+    max-height: 550px;
+    margin-top: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    
+    }
+    
+    #containerInserir h1{
+        font-size: 5.5em;
+        color:  rgba(146,101,71,1);
+        text-shadow: 1px 1px 1px #ffffff;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        }
