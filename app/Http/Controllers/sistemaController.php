@@ -20,7 +20,17 @@ class sistemaController extends Controller
                 $zero,  
                 $request->get('idade'),
                 $request->get('id_galaxia')]);
+                
+            $data = DB::select('SELECT count (*) FROM sistema_planetario WHERE galaxia_idgalaxia = :id', ['id' => $request->get('id_galaxia')]);
+            $qtde_sis=$data[0]->count;
 
+            $sistema =DB:: update('UPDATE galaxia SET qt_sistema=? WHERE idgalaxia=?',[
+                
+                $qtde_sis,
+                $request->get('id_galaxia')                                                                                                                                                                                              
+                    ]
+            );
+        
             $msg= 'Sistema inserido com sucesso';
             return(view('templates.avisos',[
                 'mensagem'=>$msg
@@ -249,11 +259,20 @@ class sistemaController extends Controller
             $Sistema =DB:: delete('DELETE FROM sistema_planetario WHERE idsistema_planetario=?',[
                 $request->get('id')
                 ]);
+            
+            $data = DB::select('SELECT count (*) FROM sistema_planetario WHERE galaxia_idgalaxia = :id', ['id' => $request->get('id_galaxia')]);
+            $qtde_sis=$data[0]->count;
 
-                $msg= 'Sistema excluido com sucesso';
-                return(view('templates.avisos',[
-                    'mensagem'=>$msg
-                ] ));
+            $galaxia =DB:: update('UPDATE galaxia SET qt_sistema=? WHERE idgalaxia=?',[
+                
+                $qtde_sis,
+                $request->get('id_galaxia')                                                                                                                                                                                              
+                ]);
+
+            $msg= 'Sistema excluido com sucesso';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
 
         }catch (Exception $e){
 

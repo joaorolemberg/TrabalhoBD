@@ -46,6 +46,7 @@
             </ul>
                 {!! Form::open(['method'=> 'put','action'=>'sistemaController@removerSistema','class'=> 'form-padrao'])!!}
                         {!! Form:: hidden('id',$sistema->idsistema_planetario ?? null)!!}
+                        {!! Form:: hidden('id_galaxia',$sistema->galaxia_idgalaxia ?? null)!!}
                     {!!Form::submit('Remover',['style'=>'margin-right:50px; clear:both','class'=>'botaoForm']) !!}
   
                 {!! Form::close() !!}

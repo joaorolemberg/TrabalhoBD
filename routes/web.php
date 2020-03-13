@@ -84,3 +84,20 @@ Route::put('/sistema/alterar', ['as'=>'sistema.alterar','uses'  =>'sistemaContro
 Route::get('/sistema/remover', ['as'=>'sistema.remover',function(){ return view('sistema.remover'); }]);
 Route::post('/sistema/remover', ['as'=>'sistema.remover','uses'  =>'sistemaController@consultaRemover']);
 Route::put('/sistema/remover', ['as'=>'sistema.remover','uses'  =>'sistemaController@removerSistema']);
+
+//GALÁXIA
+//          INSERIR
+Route::get('/galaxia/inserir', ['as'=>'galaxia.inserir',function(){ return view('galaxia.inserir'); }]);
+Route::post('/galaxia/inserir', ['as'=>'galaxia.inserir','uses'  =>'galaxiaController@inserirGalaxia']);
+Route::put('/galaxia/inserir', ['as'=>'galaxia.inserir','uses'  =>'galaxiaController@inserirEntidade']);
+//          CONSULTAR
+Route::get('/galaxia/consultar', ['as'=>'galaxia.consultar',function(){ return view('galaxia.consultar'); }]);
+Route::post('/galaxia/consultar', ['as'=>'galaxia.consultar','uses'  =>'galaxiaController@consultaGalaxia']);
+//          ALTERAR
+Route::get('/galaxia/alterar', ['as'=>'galaxia.alterar',function(){ return view('galaxia.alterar'); }]);
+Route::post('/galaxia/alterar', ['as'=>'galaxia.alterar','uses'  =>'galaxiaController@consultaAlterar']);
+Route::put('/galaxia/alterar', ['as'=>'galaxia.alterar','uses'  =>'galaxiaController@alterarGalaxia']);
+//         REMOVER
+Route::get('/galaxia/remover', ['as'=>'galaxia.remover',function(){ return view('galaxia.remover'); }]);
+Route::post('/galaxia/remover', ['as'=>'galaxia.remover','uses'  =>'galaxiaController@consultaRemover']);
+Route::put('/galaxia/remover', ['as'=>'galaxia.remover','uses'  =>'galaxiaController@removerGalaxia']);

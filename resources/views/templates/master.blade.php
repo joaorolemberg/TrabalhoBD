@@ -105,10 +105,10 @@
                                 Galáxia
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropGalaxia">
-                                <a class="dropdown-item" href="#">Consultar</a>
-                                <a class="dropdown-item" href="#">Inserir</a>
-                                <a class="dropdown-item" href="#">Alterar</a>
-                                <a class="dropdown-item" href="#">Remover</a>
+                                <a class="dropdown-item" href="{{route('galaxia.consultar')}}">Consultar</a>
+                                <a class="dropdown-item" href="{{route('galaxia.inserir')}}">Inserir</a>
+                                <a class="dropdown-item" href="{{route('galaxia.alterar')}}">Alterar</a>
+                                <a class="dropdown-item" href="{{route('galaxia.remover')}}">Remover</a>
                             </div>
                         </div>
                     </div>
