@@ -31,7 +31,7 @@
 
                 <div class="col-xl-7" style="display:block; aling-items: center; ">
                         <div class="row">
-                            <label class="labelFormsInserir" style="aling-items: center;" >ID Sitema:</label>
+                            <label class="labelFormsInserir" style="aling-items: center;" >ID Sistema:</label>
                             {!! Form:: text('idSistema',null,['id'=>'consultarText','class'=>'form-control','style'=>'max-width:40%','placeholder'=>"ID do sistema"])!!}
                         </div>
                         <div class="row">

@@ -30,7 +30,7 @@
             <div class="col-xl-7" style="display:flex; aling-items: center; ">
 
                     <label class="labelFormsInserir" >ID:</label>
-                    {!! Form:: text('id',null,['id'=>'consultarText','class'=>'form-control','placeholder'=>"ID do planeta"])!!}
+                    {!! Form:: text('id',null,['id'=>'consultarText','class'=>'form-control','placeholder'=>"ID do sistema"])!!}
             </div>
             <div class="col-xl-2" >
                     {!!Form::submit('Consultar',['style'=>'margin-right:50px; clear:both','class'=>'botaoForm']) !!}

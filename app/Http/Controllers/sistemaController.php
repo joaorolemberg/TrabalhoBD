@@ -169,11 +169,74 @@ class sistemaController extends Controller
 
     public function consultaRemover(Request $request){
         
-        $data = DB::select('select * from sistema_planetario where idsistema_planetario = :id', ['id' => $request->get('id')]);
+        try{
+            if($request->get('entidade')=='planeta'){
+                try{
+                    $Planeta =DB:: delete('DELETE FROM pertence_planeta WHERE id_sisplan_plan=? AND planeta_idplaneta=?',[
+                        $request->get('idSistema'),
+                        $request->get('idEntidade')
+                        ]);
+
+                    $data = DB::select('SELECT count (*) FROM pertence_planeta WHERE id_sisplan_plan = :id', ['id' => $request->get('idSistema')]);
+                    $qtde_plan=$data[0]->count;
     
-        return(view('sistema.removerEsp',[
-            'data'=>$data
-        ] ));
+                    $sistema =DB:: update('UPDATE sistema_planetario SET qtd_planetas=? WHERE idsistema_planetario=?',[
+                        
+                        $qtde_plan,
+                        $request->get('idSistema')                                                                                                                                                                                              
+                            ]
+                    );
+                    $msg= 'Planeta excluido com sucesso';
+                    return(view('templates.avisos',[
+                        'mensagem'=>$msg
+                    ] ));
+                }catch(Exception $e){
+                    
+                    $msg= 'Não foi possível remover planeta';
+                    return(view('templates.avisos',[
+                        'mensagem'=>$msg
+                    ] ));
+                }
+               
+            }else if($request->get('entidade')=='estrela'){
+                try{
+                    $Estrela =DB:: delete('DELETE FROM pertence_estrela WHERE id_sisplan_est=? AND estrela_idestrela=?',[
+                        $request->get('idSistema'),
+                        $request->get('idEntidade')
+                        ]);
+
+                    $data = DB::select('SELECT count (*) FROM pertence_estrela WHERE id_sisplan_est = :id', ['id' => $request->get('idSistema')]);
+                    $qtde_est=$data[0]->count;
+    
+                    $sistema =DB:: update('UPDATE sistema_planetario SET qtd_estrelas=? WHERE idsistema_planetario=?',[
+                        
+                        $qtde_est,
+                        $request->get('idSistema')                                                                                                                                                                                              
+                            ]
+                    );
+                    $msg= 'Estrela excluida com sucesso';
+                    return(view('templates.avisos',[
+                        'mensagem'=>$msg
+                    ] ));
+                }catch(Exception $e){
+                    
+                    $msg= 'Não foi possível remover estrela';
+                    return(view('templates.avisos',[
+                        'mensagem'=>$msg
+                    ] ));
+                }   
+                }else{
+                    $data = DB::select('select * from sistema_planetario where idsistema_planetario = :id', ['id' => $request->get('idSistema')]);
+    
+                    return(view('sistema.removerEsp',[
+                        'data'=>$data
+                    ] ));  
+                    }
+
+        }catch(Exception $e){
+
+        }
+        
 
         
 
@@ -183,14 +246,14 @@ class sistemaController extends Controller
     public function removerSistema(Request $request){
 
         try{
-            $Planeta =DB:: delete('DELETE FROM SISTEMA_PLANETARIO WHERE idsistema_planetario=?',[
+            $Sistema =DB:: delete('DELETE FROM sistema_planetario WHERE idsistema_planetario=?',[
                 $request->get('id')
                 ]);
-            
-            $msg= 'Sistema excluido com sucesso';
-            return(view('templates.avisos',[
-                'mensagem'=>$msg
-            ] ));
+
+                $msg= 'Sistema excluido com sucesso';
+                return(view('templates.avisos',[
+                    'mensagem'=>$msg
+                ] ));
 
         }catch (Exception $e){
 

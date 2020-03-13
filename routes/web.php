@@ -83,4 +83,4 @@ Route::put('/sistema/alterar', ['as'=>'sistema.alterar','uses'  =>'sistemaContro
 //         REMOVER
 Route::get('/sistema/remover', ['as'=>'sistema.remover',function(){ return view('sistema.remover'); }]);
 Route::post('/sistema/remover', ['as'=>'sistema.remover','uses'  =>'sistemaController@consultaRemover']);
-Route::put('/sistema/remover', ['as'=>'satelsistemaite.remover','uses'  =>'sistemaController@removerSistema']);
+Route::put('/sistema/remover', ['as'=>'sistema.remover','uses'  =>'sistemaController@removerSistema']);
