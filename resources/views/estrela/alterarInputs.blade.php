@@ -17,6 +17,7 @@
             {!! Form::open(['method'=> 'put','action'=>'estrelaController@alterarEstrela','class'=> 'form-padrao'])!!}
                 
                 {!! Form:: hidden('id',$estrela->idestrela ?? null)!!}
+                {!! Form:: hidden('tipoAnt',$estrela->tipo ?? null)!!}
                 <label class="labelFormsInserir" style="padding-left:60px;" >ID: </label>
                 <label class="labelFormsConsulta" >{{$estrela->idestrela}}</label>
 
@@ -48,7 +49,18 @@
                                                     '5' => 'Gigante Vermelha', 
                     ])!!}
 
-                 <br>    
+                 <br>
+                 <div class="form-group" style="padding-left:60px;" >     
+                    <label class="labelFormsInserir" style="padding-right:40px;" >Morte:</label>
+                    <label class="checkForm">
+                        {{ Form::checkbox('morte',null)}}
+                    </label>
+                    <br>
+                    <label class="labelFormsEstrela" >Obs: campo só precisa ser preenchido caso a estrela seja Gigante Vermelha</label>
+                    <br>
+                </div>
+                    
+          
                 {!!Form::submit('Alterar',['style'=>'margin-right:50px;','class'=>'botaoForm']) !!}
 
             {!! Form::close() !!}

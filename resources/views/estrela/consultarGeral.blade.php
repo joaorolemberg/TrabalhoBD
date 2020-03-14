@@ -49,7 +49,8 @@
                 <th scope="col">Idade</th>
                 <th scope="col">Distância</th>
                 <th scope="col">Possui SN</th>
-                <th scope="col">Tipo</th> 
+                <th scope="col">Tipo</th>
+                <th scope="col">Morte</th> 
               </tr>
             </thead>
             <tbody>
@@ -62,7 +63,7 @@
                         <td>{{$estrela->dist_terra ?? null}}</td>
                         <td>{{$estrela->psnestrela ?? null}}</td>
                         <td>{{$estrela->tipo ?? null}}</td>
-                        <td></td>
+                        <td>{{$estrela->morte ?? null}}</td>
                     </tr>
                 @endforeach
             </tbody>

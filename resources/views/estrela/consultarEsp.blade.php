@@ -78,6 +78,11 @@
                     <label class="labelFormsConsulta" >{{$estrela->tipo ?? null}}</label>
                 </dd>
 
+                <dd>
+                    <label class="labelFormsInserir" >Morte:</label>
+                    <label class="labelFormsConsulta" >{{$estrela->morte ?? null}}</label>
+                </dd>
+
                 @empty
                     <label class="labelFormsConsulta" >Estrela não encontrada, tente novamente</label>
 

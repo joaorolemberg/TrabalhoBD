@@ -119,9 +119,13 @@
                                 Relacionamentos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropRelac">
-                                <a class="dropdown-item" href="#">Orbitar</a>
-                                <a class="dropdown-item" href="#">Outra ação</a>
-                                <a class="dropdown-item" href="#">Alguma coisa aqui</a>
+                                <a class="dropdown-item" href="{{route('orbita.inserir')}}">Inserir orbita</a>
+                                <a class="dropdown-item" href="#">Remover orbita</a>
+                                <a class="dropdown-item" href="#">Listar orbita</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Inserir Buraco Negro</a>
+                                <a class="dropdown-item" href="#">Remover Buraco Negro</a>
+                                <a class="dropdown-item" href="#">Listar Buraco Negro</a>
                             </div>
                         </div>
                     </div>

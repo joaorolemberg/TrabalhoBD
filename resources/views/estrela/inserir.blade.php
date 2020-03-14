@@ -47,7 +47,19 @@
                                             '5' => 'Gigante Vermelha', 
             ])!!}
 
-        <br>         
+        <br>
+         
+        <div class="form-group" style="padding-left:60px;" >     
+            <label class="labelFormsInserir" style="padding-right:40px;" >Morte:</label>
+            <label class="checkForm">
+                {{ Form::checkbox('morte',null)}}
+            </label>
+            <br>
+            <label class="labelFormsEstrela" >Obs: campo só precisa ser preenchido caso a estrela seja Gigante Vermelha</label>
+            <br>
+            
+        </div>
+        
             {!!Form::submit('Inserir',['style'=>'margin-right:50px;','class'=>'botaoForm']) !!}
         
         {!! Form::close() !!}

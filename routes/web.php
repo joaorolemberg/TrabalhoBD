@@ -101,3 +101,9 @@ Route::put('/galaxia/alterar', ['as'=>'galaxia.alterar','uses'  =>'galaxiaContro
 Route::get('/galaxia/remover', ['as'=>'galaxia.remover',function(){ return view('galaxia.remover'); }]);
 Route::post('/galaxia/remover', ['as'=>'galaxia.remover','uses'  =>'galaxiaController@consultaRemover']);
 Route::put('/galaxia/remover', ['as'=>'galaxia.remover','uses'  =>'galaxiaController@removerGalaxia']);
+
+//Relacionamentos
+//          INSERIR
+Route::get('/orbita/inserir', ['as'=>'orbita.inserir',function(){ return view('relacionamento.inserirOrbita'); }]);
+Route::post('/orbita/inserir', ['as'=>'orbita.inserir','uses'  =>'relacionamentoController@inserirOrbita']);
+

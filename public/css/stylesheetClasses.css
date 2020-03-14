@@ -82,12 +82,33 @@
         
         
     }
+
+    .botaoFormOrb{
+        min-width: 60px;
+        min-height: 60px;
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        background-color: rgba(146,101,71,1);
+        border-radius: 10%;
+        
+        
+        
+    }
     .checkForm{
         transform: scale(1.5);
     }
     .labelFormsConsulta{
         font-size: 2.5em;
         color:  black;
+        text-shadow: 1px 1px 1px #ffffff;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+    
+    }
+    .labelFormsEstrela{
+        font-size: 2em;
+        color:  rgba(146,101,71,1);
         text-shadow: 1px 1px 1px #ffffff;
         font-weight: bold;
         font-family: 'Times New Roman', Times, serif;

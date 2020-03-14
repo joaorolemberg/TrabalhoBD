@@ -13,7 +13,7 @@ class estrelaController extends Controller
         
         try{
             $possuiSN='false';
-            $Planeta =DB:: insert('INSERT INTO estrela values(DEFAULT,?,?,?,?,?,?)',[    
+            $Estrela =DB:: insert('INSERT INTO estrela values(DEFAULT,?,?,?,?,?,?)',[    
                                                                                                                                                                                                              
                 $request->get('tamanho'),
                 $request->get('idade'),
@@ -23,10 +23,35 @@ class estrelaController extends Controller
                 $request->get('tipo')]
             
             );
+
+            if($request->get('tipo')=='5'){
+
+                if($request->get('morte')=='on'){
+
+                    $data = DB::select('select idestrela from estrela where nome = :nomeEstrela', ['nomeEstrela' => $request->get('nome')]);
+                    $idEstrela=$data[0]->idestrela;
+                    $morte='true';
+                    $Estrelaa =DB:: insert('INSERT INTO gigante_vermelha values(?,?)',[                                                                                                                                                                            
+                        $morte,
+                        $idEstrela]);
+
+                }else{
+                    $data = DB::select('select idestrela from estrela where nome = :nomeEstrela', ['nomeEstrela' => $request->get('nome')]);
+                    $idEstrela=$data[0]->idestrela;
+                    $morte='false';
+                    $Estrelaa =DB:: insert('INSERT INTO gigante_vermelha values(?,?)',[                                                                                                                                                                            
+                        $morte,
+                        $idEstrela]);
+
+                }
+
+            }
             $msg= 'Estrela inserida com sucesso';
             return(view('templates.avisos',[
                 'mensagem'=>$msg
             ] ));
+
+
 
         }catch (Exception $e){
             $msg= 'Não foi possível inserir a estrela,tente novamente';
@@ -46,8 +71,11 @@ class estrelaController extends Controller
         $tipoConsulta= $request->get('consulta');
 
         if($tipoConsulta=='esp'){
-            $data = DB::select('select * from estrela where idEstrela = :id', ['id' => $request->get('id')]);
-                    
+            $data = DB::select('SELECT * FROM estrela e 
+                        LEFT JOIN gigante_vermelha g ON (e.idestrela = g.gv_idestrela)
+                        WHERE e.idestrela=?', 
+            [ $request->get('id')]);
+                  
             try{
                 if($data[0]->psnestrela=='true'){
                     $data[0]->psnestrela='SIM';
@@ -69,7 +97,15 @@ class estrelaController extends Controller
     
                             }else{
                                     $data[0]->tipo='Gigante Vermelha';
+                                    if($data[0]->morte=='true'){
+                                        $data[0]->morte='SIM';
+                                    }else{
+                    
+                                        $data[0]->morte='NÃO';
+                                    }
                                 }
+
+
                 return(view('estrela.consultarEsp',[
                     'data'=>$data
                 ] ));
@@ -83,7 +119,9 @@ class estrelaController extends Controller
     
         }else{
             //retornar lista com todas as estrelas
-            $data = DB::table('estrela')->get();
+            $data = DB::select('SELECT * FROM estrela e 
+                        LEFT JOIN gigante_vermelha g 
+                        ON (e.idestrela = g.gv_idestrela)');
             
             foreach ($data as $value) {
                 if($value->psnestrela=='true'){
@@ -105,7 +143,12 @@ class estrelaController extends Controller
     
                             }else{
                                 $value->tipo='Gigante Vermelha';
+                                if($value->morte=='true'){
+                                    $value->morte='SIM';
+                                }else{
+                                    $value->morte='NÃO';
                                 }
+                            }
             }
             return(view('estrela.consultarGeral',[
                 'data'=>$data
@@ -127,6 +170,7 @@ class estrelaController extends Controller
     }
     public function alterarEstrela(Request $request){
         try{
+            
             $possuiSN='false';
 
             if($request->get('possuiSN')=='SIM'){
@@ -143,6 +187,50 @@ class estrelaController extends Controller
                 $request->get('id')
                 
                 ]);
+
+            //SE O TIPO DA ESTRELA A ALTERAR FOI DEFINIDO GIG. VERMELHA
+            if($request->get('tipo')=='5'){
+                //SE ELA JÁ ERA GIGANTE, NA TABELA GIGANTE SÓ PRECISA SER ALTERADO A MORTE
+                if($request->get('tipoAnt')=='5')   {                
+                    $morte='false';
+                    if($request->get('morte')=='on'){
+                        $morte='true';
+                        $data = DB::update('UPDATE gigante_vermelha SET morte=? where gv_idestrela = ?', [
+                            $morte,
+                            $request->get('id')]);
+
+
+                    }else{
+                        $data = DB::update('UPDATE gigante_vermelha SET morte=? where gv_idestrela = ?', [
+                            $morte,
+                            $request->get('id')]);
+                    }
+                //SE ELA NÃO ERA GIGANTE, PRECISA SER ADICIONADO NA TABELA GIGANTE
+                }else{
+                    if($request->get('morte')=='on'){
+
+                        $morte='true';
+                        $Estrelaa =DB:: insert('INSERT INTO gigante_vermelha values(?,?)',[                                                                                                                                                                            
+                            $morte,
+                            $request->get('id')]);
+                    }else{
+                        $morte='false';
+                        $Estrelaa =DB:: insert('INSERT INTO gigante_vermelha values(?,?)',[                                                                                                                                                                            
+                            $morte,
+                            $request->get('id')]);
+                    }
+                }
+            //SE O TIPO DA ESTRELA A ALTERAR DEFINIDA NÃO FOI GIG. VERMELHA
+            }else{
+                //MAS ELA ANTERIORMENTE ERA GIGANTE VERMELHA É NECESSÁRIO APAGÁ-LA DA TABELA GIG. VERMELHA
+                if($request->get('tipoAnt')=='5')   {
+
+                    $Estrela =DB:: delete('DELETE FROM gigante_vermelha WHERE gv_idestrela=?',[
+                        $request->get('id')
+                        ]);  
+                }
+
+            }
 
             $msg= 'Estrela alterada com sucesso';
             return(view('templates.avisos',[
