@@ -99,11 +99,6 @@ class relacionamentoController extends Controller
                     }
 
                 }
-
-
-
-
-
         }
 
     }
@@ -137,4 +132,60 @@ class relacionamentoController extends Controller
             
         }
     }
+
+    public function inserirBuraco(Request $request){
+        
+        try{
+            $data = DB::insert('INSERT INTO buraco_negro values(?)',[
+                $request->get('id')
+            ]);
+            
+            $msg= 'Buraco inserido com sucesso ';
+
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+        }catch(Exception $e){
+
+            $msg= 'Buraco não inserido, tente novamente!';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+            
+        }
+    }
+
+    public function consultarBuraco(Request $request){
+        
+        $data = DB::select('SELECT id_buraconegro,nome 
+                        FROM buraco_negro b JOIN estrela e 
+                        ON (b.id_buraconegro=e.idestrela)');
+
+        return(view('relacionamento.consultarBuraco',[
+            'data'=>$data
+        ] ));
+    }
+
+    public function removerBuraco(Request $request){
+
+        try{
+            $data = DB::delete('DELETE from buraco_negro WHERE id_buraconegro = ?', [$request->get('id')]);
+            
+            $msg= 'Buraco removido com sucesso ';
+
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+
+        }catch(Exception $e){
+
+            $msg= 'Buraco não removido, tente novamente!';
+            return(view('templates.avisos',[
+                'mensagem'=>$msg
+            ] ));
+            
+        }
+        
+    }
+
 }

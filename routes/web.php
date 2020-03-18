@@ -102,9 +102,9 @@ Route::get('/galaxia/remover', ['as'=>'galaxia.remover',function(){ return view(
 Route::post('/galaxia/remover', ['as'=>'galaxia.remover','uses'  =>'galaxiaController@consultaRemover']);
 Route::put('/galaxia/remover', ['as'=>'galaxia.remover','uses'  =>'galaxiaController@removerGalaxia']);
 
-//Relacionamentos
+//RELACIONAMENTOS
+//      ÓRBITA
 //          INSERIR
-                //ORBITA
 Route::get('/orbita/inserir', ['as'=>'orbita.inserir',function(){ return view('relacionamento.inserirOrbita'); }]);
 Route::post('/orbita/inserir', ['as'=>'orbita.inserir','uses'  =>'relacionamentoController@inserirOrbita']);
 //          CONSULTAR
@@ -112,3 +112,13 @@ Route::get('/orbita/consultar', ['as'=>'orbita.consultar','uses'  =>'relacioname
 //         REMOVER
 Route::get('/orbita/remover', ['as'=>'orbita.remover',function(){ return view('relacionamento.removerOrbita'); }]);
 Route::post('/orbita/remover', ['as'=>'orbita.remover','uses'  =>'relacionamentoController@removerOrbita']);
+
+//      BURACO
+//          INSERIR
+Route::get('/buraco/inserir', ['as'=>'buraco.inserir',function(){ return view('relacionamento.inserirBuraco'); }]);
+Route::post('/buraco/inserir', ['as'=>'buraco.inserir','uses'  =>'relacionamentoController@inserirBuraco']);
+//          CONSULTAR
+Route::get('/buraco/consultar', ['as'=>'buraco.consultar','uses'  =>'relacionamentoController@consultarBuraco']);
+//          REMOVER
+Route::get('/buraco/remover', ['as'=>'buraco.remover',function(){ return view('relacionamento.removerBuraco'); }]);
+Route::post('/buraco/remover', ['as'=>'buraco.remover','uses'  =>'relacionamentoController@removerBuraco']);

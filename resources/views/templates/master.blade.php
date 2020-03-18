@@ -123,24 +123,13 @@
                                 <a class="dropdown-item" href="{{route('orbita.consultar')}}">Listar orbita</a>
                                 <a class="dropdown-item" href="{{route('orbita.remover')}}">Remover orbita</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Inserir Buraco Negro</a>
-                                <a class="dropdown-item" href="#">Remover Buraco Negro</a>
-                                <a class="dropdown-item" href="#">Listar Buraco Negro</a>
+                                <a class="dropdown-item" href="{{route('buraco.inserir')}}">Inserir Buraco Negro</a>
+                                <a class="dropdown-item" href="{{route('buraco.consultar')}}">Listar Buraco Negro</a>
+                                <a class="dropdown-item" href="{{route('buraco.remover')}}">Remover Buraco Negro</a>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
- 
                 </div>
-                         
-
-                        
-
-                       
             </header>
             
             @yield('conteudo-view')
