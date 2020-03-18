@@ -253,7 +253,10 @@ class estrelaController extends Controller
 
     public function consultaRemover(Request $request){
         
-        $data = DB::select('select * from estrela where idEstrela = :id', ['id' => $request->get('id')]);
+        $data = DB::select('SELECT * FROM estrela e 
+                    LEFT JOIN gigante_vermelha g ON (e.idestrela = g.gv_idestrela)
+                    WHERE e.idestrela=?', [
+                        $request->get('id')]);
         try{
             if($data[0]->psnestrela=='true'){
                 $data[0]->psnestrela='SIM';
@@ -275,6 +278,11 @@ class estrelaController extends Controller
 
                         }else{
                                 $data[0]->tipo='Gigante Vermelha';
+                                if($data[0]->morte=='true'){
+                                    $data[0]->morte='SIM';
+                                }else{
+                                    $data[0]->morte='NÃO';
+                                }
                             }
             return(view('estrela.removerEsp',[
                 'data'=>$data

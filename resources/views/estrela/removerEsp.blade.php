@@ -37,7 +37,7 @@
                     
                 <dd>
                     <label class="labelFormsInserir" >Distancia da terra :</label>
-                    <label class="labelFormsConsulta" >{{$estrela->dist_terra ?? null}} km/h</label>
+                    <label class="labelFormsConsulta" >{{$estrela->dist_terra ?? null}} km</label>
                 </dd>
                 
                 <dd>
@@ -48,6 +48,11 @@
                 <dd>
                     <label class="labelFormsInserir" >Tipo:</label>
                     <label class="labelFormsConsulta" >{{$estrela->tipo ?? null}}</label>
+                </dd>
+
+                <dd>
+                    <label class="labelFormsInserir" >Morte:</label>
+                    <label class="labelFormsConsulta" >{{$estrela->morte ?? null}}</label>
                 </dd>
 
                 @empty

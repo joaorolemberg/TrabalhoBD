@@ -12,7 +12,7 @@
 
     <h1>Inserir Órbita</h1>  
         <!-- CASO FOR UTILIZAR 2 METODOS ALTERAR O METHOD SEMELHANTE AO LOGIN-->
-        {!! Form::open(['method'=> 'put','class'=> 'form-padrao'])!!}
+        {!! Form::open(['method'=> 'post','class'=> 'form-padrao'])!!}
 
             <h3>Selecione o tipo de entidade a orbitar e a ser orbitada</h3>
             <br>
@@ -31,31 +31,31 @@
             <div class="row">
 
                 <div class="col-xl-2" id="radios"  >
-                    {!! Form:: radio('entidade','Satélite',['class'=>'radioForm','type'=>'radio','id'=>'a'])!!}
+                    {!! Form:: radio('entidadeOrbitar','satelite',['class'=>'radioForm','type'=>'radio','id'=>'a'])!!}
                     <label class="form-check-label" for="a">Satélite</label>
                     <br>
-                    {!! Form:: radio('entidade','planeta',['class'=>'radioForm','type'=>'radio','id'=>'b'])!!}
+                    {!! Form:: radio('entidadeOrbitar','planeta',['class'=>'radioForm','type'=>'radio','id'=>'b'])!!}
                     <label class="form-check-label" for="b">Planeta</label>
                 </div>
 
                 <div class="col-xl-3" style="display:block; aling-items: center; ">
                     <div class="row">
-                        <label class="labelFormsInserir" style="aling-items: center;" >ID Sistema:</label>
-                        {!! Form:: text('idSistema',null,['id'=>'consultarText','class'=>'form-control','style'=>'max-width:65%','placeholder'=>"ID do sistema"])!!}
+                        <label class="labelFormsInserir" style="aling-items: center;" >ID orbitar:</label>
+                        {!! Form:: text('idOrbitar',null,['id'=>'consultarText','class'=>'form-control','style'=>'max-width:65%','placeholder'=>"ID a orbitar"])!!}
                     </div>
                 </div>
 
                 <div class="col-xl-2" id="radios">
-                    {!! Form:: radio('entidade','estrela',['class'=>'radioForm','type'=>'radio','id'=>'a'])!!}
+                    {!! Form:: radio('entidadeOrbitada','estrela',['class'=>'radioForm','type'=>'radio','id'=>'a'])!!}
                     <label class="form-check-label" for="a">Estrela</label>
                     <br>
-                    {!! Form:: radio('entidade','planeta',['class'=>'radioForm','type'=>'radio','id'=>'b'])!!}
+                    {!! Form:: radio('entidadeOrbitada','planeta',['class'=>'radioForm','type'=>'radio','id'=>'b'])!!}
                     <label class="form-check-label" for="b">Planeta</label>
                 </div>
 
                 <div class="col-xl-3" >
-                        <label class="labelFormsInserir" style="aling-items: center;" >ID Entidade:</label>
-                            {!! Form:: text('idEntidade',null,['id'=>'consultarText','class'=>'form-control','style'=>'max-width:65%','placeholder'=>"ID da entidade"])!!}
+                        <label class="labelFormsInserir" style="aling-items: center;" >ID orbitada:</label>
+                            {!! Form:: text('idOrbitada',null,['id'=>'consultarText','class'=>'form-control','style'=>'max-width:65%','placeholder'=>"ID a ser orbitado"])!!}
                 </div>
 
                
@@ -65,7 +65,7 @@
                 <div class="col-xl-4" >
                 </div>
                 <div class="col-xl-4" >
-                    {!!Form::submit('Inserir entidade',['style'=>'margin-right:50px;','class'=>'botaoFormOrb']) !!}
+                    {!!Form::submit('Inserir',['style'=>'margin-right:50px;','class'=>'botaoFormOrb']) !!}
                 </div>
                 <div class="col-xl-4" >
                 </div>
