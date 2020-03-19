@@ -30,7 +30,7 @@
 
                     <div class="col-xl-4 col-md-3" >
 
-                            <a href="">Consulta Geral</a>
+                            <a href="{{route('consultaGeral')}}">Consulta Geral</a>
                             <a href="">Logout</a>
 
                     </div>

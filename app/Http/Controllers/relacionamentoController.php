@@ -136,15 +136,28 @@ class relacionamentoController extends Controller
     public function inserirBuraco(Request $request){
         
         try{
-            $data = DB::insert('INSERT INTO buraco_negro values(?)',[
-                $request->get('id')
-            ]);
-            
-            $msg= 'Buraco inserido com sucesso ';
+            $estrela = DB::select('SELECT * 
+            FROM gigante_vermelha WHERE gv_idestrela=?',[$request->get('id')]);
 
-            return(view('templates.avisos',[
-                'mensagem'=>$msg
-            ] ));
+            if($estrela[0]->morte=='true'){
+
+                $data = DB::insert('INSERT INTO buraco_negro values(?)',[
+                    $request->get('id')
+                ]);
+                
+                $msg= 'Buraco inserido com sucesso ';
+
+                return(view('templates.avisos',[
+                    'mensagem'=>$msg
+                ] ));
+
+            }else{
+                $msg= 'Gigante vermelha não está morta ';
+                return(view('templates.avisos',[
+                    'mensagem'=>$msg
+                ] ));
+            }
+
         }catch(Exception $e){
 
             $msg= 'Buraco não inserido, tente novamente!';
@@ -188,4 +201,98 @@ class relacionamentoController extends Controller
         
     }
 
+    public function consultaGeral(Request $request){
+        
+        $data1 = DB::table('planeta')->get();
+
+        foreach ($data1 as $value) {
+            if($value->psn_planeta=='true'){
+                $value->psn_planeta='SIM';
+            }else{
+                $value->psn_planeta='NÃO';
+            }
+        }
+        
+        $data2 = DB::select('SELECT * FROM estrela e 
+                        LEFT JOIN gigante_vermelha g 
+                        ON (e.idestrela = g.gv_idestrela)');
+            
+            foreach ($data2 as $value) {
+                if($value->psnestrela=='true'){
+                    $value->psnestrela='SIM';
+                }else{
+                    $value->psnestrela='NÃO';
+                }
+                if($value->tipo=='1'){
+                    $value->tipo='Anã Vermelha';
+    
+                }else if($value->tipo=='2'){
+                        $value->tipo='Anã Branca';
+    
+                    }else if($value->tipo=='3'){
+                        $value->tipo='Estrela Binária';
+    
+                        }else if($value->tipo=='4'){
+                                $value->tipo='Gigante Azul';
+    
+                            }else{
+                                $value->tipo='Gigante Vermelha';
+                                if($value->morte=='true'){
+                                    $value->morte='SIM';
+                                }else{
+                                    $value->morte='NÃO';
+                                }
+                            }
+            }
+        
+        $data3 = DB::table('satelite_natural')->get();
+        $data4 = DB::select('SELECT * FROM galaxia g FULL JOIN sistema_planetario sp ON(g.idgalaxia=sp.galaxia_idgalaxia)');
+
+        
+        
+        $data5=DB::select('
+
+            WITH planetas AS (
+                SELECT 	id_sisplan_plan as idsistema_planetario,
+                    idplaneta,
+                    nome
+                FROM planeta p JOIN pertence_planeta pp 
+                    ON (p.idplaneta=pp.planeta_idplaneta)
+            )
+            SELECT 	sp.*,
+                planetas.nome as nome_planeta,
+                planetas.idplaneta
+                
+            FROM 	sistema_planetario sp LEFT JOIN
+                planetas USING (idsistema_planetario) 
+       ' );
+        
+       $data6=DB::select('
+            WITH estrelas as (
+                SELECT 	id_sisplan_est as idsistema_planetario,
+                    idestrela,
+                    nome
+                FROM estrela e 
+                    JOIN pertence_estrela pe ON (e.idestrela=pe.estrela_idestrela)
+                    
+                )
+                SELECT 	sp.*,
+                    estrelas.nome as nome_estrela,
+                    estrelas.idestrela
+                    
+                FROM 	sistema_planetario sp LEFT JOIN
+                    estrelas USING (idsistema_planetario) 
+       
+       ');
+
+        return(view('consultaGeral',[
+                'data1'=>$data1,
+                'data2'=>$data2,
+                'data3'=>$data3,
+                'data4'=>$data4,
+                'data5'=>$data5,
+                'data6'=>$data6
+
+        ]));
+    }
 }

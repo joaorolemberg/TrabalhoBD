@@ -122,3 +122,6 @@ Route::get('/buraco/consultar', ['as'=>'buraco.consultar','uses'  =>'relacioname
 //          REMOVER
 Route::get('/buraco/remover', ['as'=>'buraco.remover',function(){ return view('relacionamento.removerBuraco'); }]);
 Route::post('/buraco/remover', ['as'=>'buraco.remover','uses'  =>'relacionamentoController@removerBuraco']);
+
+//      GERAL
+Route::get('/consultaGeral', ['as'=>'consultaGeral','uses'  =>'relacionamentoController@consultaGeral']);

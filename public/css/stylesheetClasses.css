@@ -114,5 +114,14 @@
         font-family: 'Times New Roman', Times, serif;
     
     }
+    .labelGeral{
+        font-size: 3.5em;
+        color:  rgba(146,101,71,1);
+        text-shadow: 1px 1px 1px #ffffff;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+
+    }
 
 }

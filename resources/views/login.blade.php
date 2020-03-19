@@ -56,7 +56,7 @@
                         </form>
                         
                         <br> 
-                        <a href="">Cadastre-se</a>
+                        
                             
                     </div>
 
