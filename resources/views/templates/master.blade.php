@@ -31,7 +31,7 @@
                     <div class="col-xl-4 col-md-3" >
 
                             <a href="{{route('consultaGeral')}}">Consulta Geral</a>
-                            <a href="">Logout</a>
+                            <a href="{{route('login')}}">Logout</a>
 
                     </div>
 
