@@ -59,7 +59,12 @@ class relacionamentoController extends Controller
                             null,
                             $idOrbitar
                         ]);
-                    
+
+                    $Planeta =DB:: update('UPDATE Planeta SET psn_planeta=? WHERE idPlaneta=?',[
+                        true,
+                        $idOrbitada
+                    ]);
+
                     $msg= 'Órbita: Satélite orbita Planeta inserida com sucesso!';
                     return(view('templates.avisos',[
                         'mensagem'=>$msg
@@ -85,7 +90,11 @@ class relacionamentoController extends Controller
                             $idOrbitada,
                             $idOrbitar
                         ]);
-                    
+                        $estrela =DB:: update('UPDATE estrela SET psnestrela=? WHERE idEstrela=?',[
+                            true,
+                            $idOrbitada
+                        ]);
+
                         $msg= 'Órbita: Satélite orbita Estrela inserida com sucesso!';
                         return(view('templates.avisos',[
                             'mensagem'=>$msg
@@ -116,6 +125,46 @@ class relacionamentoController extends Controller
 
 
         try{
+            $linha=DB::select('SELECT * FROM orbitar WHERE idorbitar = ?', [$request->get('id')]);
+
+            //verificando se com a orbita removida alguem vai deixar de ter satelite natural
+           
+            if($linha[0]->satelite_natural_idsn !=null){
+
+                
+                if($linha[0]->planeta_idplaneta !=null){
+
+
+                    $qtdSNPlaneta=DB::select('
+                        SELECT count(*) as qtde FROM ORBITAR 
+                        WHERE (planeta_idplaneta=?) AND satelite_natural_idsn IS NOT NULL 
+                    ',[$linha[0]->planeta_idplaneta]);
+                    
+                    if($qtdSNPlaneta[0]->qtde==1){
+
+                        $Planeta =DB:: update('UPDATE Planeta SET psn_planeta=? WHERE idPlaneta=?',[
+                            false,
+                            $linha[0]->planeta_idplaneta
+                        ]);
+                    }
+                }else{
+                    
+                    $qtdSNEstrela=DB::select('
+                    SELECT count(*) as qtde FROM ORBITAR 
+                    WHERE (estrela_idestrela=?) AND satelite_natural_idsn IS NOT NULL 
+                    ',[$linha[0]->estrela_idestrela]);
+
+                    if($qtdSNEstrela[0]->qtde==1){
+
+                        $estrela =DB:: update('UPDATE estrela SET psnestrela=? WHERE idestrela=?',[
+                            false,
+                            $linha[0]->estrela_idestrela
+                        ]);
+                    }
+
+                }
+            }
+
             $data = DB::delete('DELETE from orbitar where idorbitar = ?', [$request->get('id')]);
             
             $msg= 'Órbita removida com sucesso ';
